@@ -1,0 +1,15 @@
+
+<h1>Ini adalah halaman Index!</h1>
+
+<h4>Daftar Mahasiswa</h4>
+
+<% if (mahasiswa.length < 1) { %>
+    <p>Data mahasiswa masih kosong</p>
+<% } else { %>
+    <% mahasiswa.forEach(i => { %>
+        <ul>
+            <li>Nama :  <%= i.nama %>  </li>
+            <li>Email :  <%= i.email %>  </li>
+        </ul> 
+    <% }) %>
+<% } %> 

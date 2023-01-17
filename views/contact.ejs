@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 table-responsive">
+            <h2>Daftar Contact</h2>
+            <a href="/contact/create" class="btn btn-success mb-2">Tambah</a>
+
+            <% if (msg.length !== 0) { %>
+                <div class="alert alert-success" role="alert">
+                    <%=msg  %> 
+                </div>
+            <% } %>
+            <table class="table">
+                <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">NO</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        <% if (contacts.length == 0) { %>
+                            <div class="alert alert-danger" role="alert">
+                                Data Contact tidak ada
+                            </div>
+                        <% } %>
+                    </td>
+                </tr>
+                <% contacts.forEach((i, key) => { key++ %>
+                    <tr>
+                        <th scope="row"><%= key  %> </th>
+                        <td><%= i.nohp  %> </td>
+                        <td><%= i.nama  %> </td>
+                        <td>
+                            <form action="/contact?_method=DELETE" method="POST" class="d-inline">
+                                <input type="hidden" name="nama" value="<%=i.nama%>">
+                                <button type="submit" class="btn btn-danger text-white badge" onclick="return confirm('yakin?')">Delete</button>
+                            </form>
+                            <a href="/contact/edit/<%= i.nama %> " class="btn btn-warning text-white badge rounded-phil">Update</a>
+                            <a href="/contact/<%= i.nama %> " class="btn btn-info text-white badge rounded-phil">Detail</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

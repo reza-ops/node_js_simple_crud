@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Form update contact</h2>
+
+            <% if (typeof errors != 'undefined') { %>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <% errors.forEach(i => { %>
+                            <li><%= i.msg  %> </li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
+            <form method="POST" action="/contact?_method=PUT">
+                <input type="hidden" name="_id" value="<%= contact._id  %>">
+                <input type="hidden" name="oldName" value="<%= contact.oldName || contact.nama  %>">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" name="nama" class="form-control" id="nama" aria-describedby="nama" value="<%= contact.nama  %>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" id="email" aria-describedby="email" value="<%= contact.email  %>">
+                </div>
+                <div class="form-group">
+                    <label for="no">Nomor</label>
+                    <input type="text" name="nohp" class="form-control" id="no" aria-describedby="no" value="<%= contact.nohp %>">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
